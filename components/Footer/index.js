@@ -8,7 +8,7 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Footer V.0.0.1
+        V.0.0.1
         <span className={styles.logo}>
           <img src="icons/logo.png" alt="Logo" width={16} height={16} />
         </span>
