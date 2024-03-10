@@ -5,16 +5,54 @@ import { TbMobiledata } from "react-icons/tb";
 export default function Main() {
   const [text, setText] = useState("");
 
+  const [response, setResponse] = useState("");
+  const [isLoading, setLoading] = useState(true);
+
+  const apiUrl = "https://api.deepseek.com/v1/chat/completions";
+  const key = "sk-7f8e25e499a44e25901baf1d32a930eb";
+
   const [btnStatus, setBtnStatus] = useState("english");
   const [btnStatusRes, setBtnStatusRes] = useState("persian");
   const active =
     "bg-gray-800 text-white rounded-full p-2 text-sm font-semibold";
   const disable = "bg-gray-200 p-2 text-sm font-semibold rounded-full";
 
-  const changeHandler = (e) => {
+  const changeHandler = async (e) => {
     setText(e.target.value);
-    console.log(text);
+
+    await fetch(apiUrl, {
+      method: "POST",
+      body: JSON.stringify({
+        model: "deepseek-chat",
+        messages: [{ role: "user", content: e.target.value }],
+      }),
+      headers: {
+        Authorization: "Bearer " + key,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setResponse(data.choices[0].message.content);
+      });
   };
+
+  // useEffect(() => {
+  //   fetch("https://jsonplaceholder.typicode.com/posts")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data.splice(0, 5));
+  //       setLoading(false);
+  //     });
+  // }, []);
+
+  // if (isLoading) return <p>Loading...</p>;
+  // if (!data) return <p>No profile data</p>;
+  // <div>
+  //   {data?.map((item) => (
+  //     <p className="font-semibold text-xs">{item.title}</p>
+  //   ))}
+  // </div>;
 
   return (
     <div className="w-full ">
@@ -62,8 +100,7 @@ export default function Main() {
           <textarea
             name="text"
             className={`m-0 p-2 rounded ${styles.textarea}`}
-            value={text}
-            onChange={(e) => changeHandler(e)}
+            value={response}
             rows="20"
           ></textarea>
         </div>
