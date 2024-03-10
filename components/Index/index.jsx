@@ -2,6 +2,7 @@ import styles from "../../styles/Pages.module.css";
 import { useState, useEffect } from "react";
 import { BsTranslate } from "react-icons/bs";
 import { FaSquarePen } from "react-icons/fa6";
+import Main from "../Main/Main";
 
 export default function Index({ navigateToPage }) {
   const [data, setData] = useState(null);
@@ -32,9 +33,11 @@ export default function Index({ navigateToPage }) {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <div className="flex h-full">
-          <div className="min-w-80 bg-gray-50">test1</div>
-          <div className="w-20 bg-slate-300 pr-1">
+        <div className="flex h-full rounded">
+          <div className="min-w-80 bg-gray-50 rounded-l-md text-gray-800">
+            <Main />
+          </div>
+          <div className="w-20 bg-gray-400 pr-1 rounded-r-md">
             <button className={btnStatus === "translate" ? active : disable}>
               <BsTranslate />
               <p className="font-semibold text-xs">Translate</p>

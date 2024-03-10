@@ -1,7 +1,7 @@
 .container {
   width: 400px;
   height: 485px;
-  background: linear-gradient(153deg, rgb(116, 56, 216), rgb(18, 150, 170) 74%);
+  background: linear-gradient(153deg, rgb(86, 86, 86), rgb(33, 33, 33) 74%);
   padding: 5px;
   color: white;
 }
@@ -36,4 +36,10 @@
   padding: 20px;
   font: small Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.textarea {
+  background-color: rgb(238, 238, 238);
+  width: 95%;
+  border: 1px solid #7d009c;
 }
