@@ -1,4 +1,4 @@
-import styles from './Footer.module.css';
+import styles from "./Footer.module.css";
 
 export default function Footer() {
   return (
@@ -10,12 +10,7 @@ export default function Footer() {
       >
         Footer V.0.0.1
         <span className={styles.logo}>
-          <img
-            src="icons/icon16.png"
-            alt="Logo"
-            width={16}
-            height={16}
-          />
+          <img src="icons/logo.png" alt="Logo" width={16} height={16} />
         </span>
       </a>
     </footer>
