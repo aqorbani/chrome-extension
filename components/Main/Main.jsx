@@ -7,8 +7,9 @@ export default function Main() {
 
   const [btnStatus, setBtnStatus] = useState("english");
   const [btnStatusRes, setBtnStatusRes] = useState("persian");
-  const active = "bg-gray-800 text-white rounded-xl p-2 text-sm font-semibold";
-  const disable = "bg-gray-200 p-2 text-sm font-semibold rounded-xl";
+  const active =
+    "bg-gray-800 text-white rounded-full p-2 text-sm font-semibold";
+  const disable = "bg-gray-200 p-2 text-sm font-semibold rounded-full";
 
   const changeHandler = (e) => {
     setText(e.target.value);
@@ -19,7 +20,7 @@ export default function Main() {
     <div className="w-full ">
       <div className="w-full">
         <h2 className="p-1 m-1 text-xl font-bold">Translate</h2>
-        <div className="flex w-fit m-2 bg-gray-200 rounded-xl">
+        <div className="flex w-fit m-2 bg-gray-200 rounded-full">
           <button className={btnStatus === "english" ? active : disable}>
             English detected
           </button>
@@ -46,7 +47,7 @@ export default function Main() {
         <h2 className="flex w-full justify-center mt-3 mb-3 p-1 m-1 text-xl font-bold">
           <TbMobiledata />
         </h2>
-        <div className="flex w-fit m-2 bg-gray-200 rounded-xl">
+        <div className="flex w-fit m-2 bg-gray-200 rounded-full">
           <button className={btnStatusRes === "persian" ? active : disable}>
             Persian
           </button>
