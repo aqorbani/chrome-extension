@@ -18,7 +18,7 @@ export default function Index({ navigateToPage }) {
           <div className="min-w-80 bg-gray-50 rounded-l-md text-gray-800">
             {btnStatus === "write" ? <Write /> : <Main />}
           </div>
-          <div className="w-20 bg-gray-400 pr-1 rounded-r-md pt-10">
+          <div className="w-20 bg-gray-400 pr-1 rounded-r-md pt-32">
             <button
               onClick={() => setBtnStatus("translate")}
               className={btnStatus === "translate" ? active : disable}

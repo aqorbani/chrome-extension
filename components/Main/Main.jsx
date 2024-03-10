@@ -37,23 +37,6 @@ export default function Main() {
       });
   };
 
-  // useEffect(() => {
-  //   fetch("https://jsonplaceholder.typicode.com/posts")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData(data.splice(0, 5));
-  //       setLoading(false);
-  //     });
-  // }, []);
-
-  // if (isLoading) return <p>Loading...</p>;
-  // if (!data) return <p>No profile data</p>;
-  // <div>
-  //   {data?.map((item) => (
-  //     <p className="font-semibold text-xs">{item.title}</p>
-  //   ))}
-  // </div>;
-
   return (
     <div className="w-full ">
       <div className="w-full">

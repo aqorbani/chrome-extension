@@ -41,7 +41,7 @@
 .textarea {
   background-color: rgb(238, 238, 238);
   width: 95%;
-  height: 100px;
+  height: 80px;
   border: 1px solid #7d009c;
   resize: none;
 }
