@@ -11,23 +11,28 @@ export default function Main() {
   const apiUrl = "https://api.deepseek.com/v1/chat/completions";
   const key = "sk-7f8e25e499a44e25901baf1d32a930eb";
 
-  let basicText =
-    "translate below text {Auto- English} to {Farsi}:\n ```text \n" +
-    text +
-    "\n```";
-
   const [btnStatus, setBtnStatus] = useState("english");
   const [btnStatusRes, setBtnStatusRes] = useState("persian");
   const active =
     "bg-gray-800 text-white rounded-full p-2 text-sm font-semibold";
   const disable = "bg-gray-200 p-2 text-sm font-semibold rounded-full";
 
-  useEffect(() => {
-    translateHandler();
-  }, [basicText]);
+  // useEffect(() => {
+  //   translateHandler();
+  // }, [text]);
 
   const changeHandler = async (e) => {
     await setText(e.target.value);
+  };
+
+  const updatedContent = async () => {
+    let basicText =
+      "translate below text {Auto- English} to {Farsi}:" +
+      "\n```text\n" +
+      text +
+      "\n```";
+
+    return basicText;
   };
 
   const translateHandler = async () => {
@@ -35,11 +40,14 @@ export default function Main() {
       setResponse("");
       return;
     }
+
+    const finalContent = await updatedContent();
+
     await fetch(apiUrl, {
       method: "POST",
       body: JSON.stringify({
         model: "deepseek-chat",
-        messages: [{ role: "user", content: basicText }],
+        messages: [{ role: "user", content: finalContent }],
       }),
       headers: {
         Authorization: "Bearer " + key,
@@ -81,7 +89,7 @@ export default function Main() {
 
       <div className="w-full">
         <h2 className="flex w-full justify-center mt-3 mb-3 p-1 m-1 text-xl font-bold">
-          <TbMobiledata />
+          <TbMobiledata onClick={() => translateHandler()} />
         </h2>
         <div className="flex w-fit m-2 bg-gray-200 rounded-full">
           <button className={btnStatusRes === "persian" ? active : disable}>

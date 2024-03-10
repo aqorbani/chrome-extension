@@ -8,8 +8,9 @@ import Write from "../Write/Write";
 export default function Index({ navigateToPage }) {
   const [btnStatus, setBtnStatus] = useState("translate");
   const active =
-    "flex flex-col justify-center items-center w-full pt-3 p-2 bg-gray-50 text-purple-900 transition-all hover:delay-50 rounded-r-3xl";
-  const disable = "flex flex-col justify-center items-center w-full pt-3 p-2";
+    "flex flex-col justify-center items-center w-full pt-3 p-2 bg-gray-50 text-gray-900 transition-all hover:delay-50 rounded-r-3xl";
+  const disable =
+    "flex flex-col text-gray-300 justify-center items-center w-full pt-3 p-2";
 
   return (
     <div className={styles.container}>

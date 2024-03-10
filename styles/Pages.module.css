@@ -1,7 +1,8 @@
 .container {
   width: 400px;
   min-height: 485px;
-  background: linear-gradient(153deg, rgb(86, 86, 86), rgb(33, 33, 33) 74%);
+  /* background: linear-gradient(180deg, #ededed, #cecece 74%); */
+  background: transparent;
   padding: 5px;
   color: white;
 }
@@ -42,7 +43,7 @@
   background-color: rgb(238, 238, 238);
   width: 95%;
   height: 80px;
-  border: 1px solid #7d009c;
+  border: 1px solid #3a3a3a;
   resize: none;
   font-size: small;
   font-weight: normal;

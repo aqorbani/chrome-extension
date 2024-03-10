@@ -10,7 +10,7 @@ export default function Main() {
   const [response, setResponse] = useState("");
 
   const active =
-    "bg-purple-950 text-white rounded-full m-1 pr-2 pl-2 text-xs font-normal";
+    "bg-gray-500 text-white rounded-full m-1 pr-2 pl-2 text-xs font-normal";
   const disable =
     "bg-gray-200 rounded-full m-1 pr-2 pl-2 text-xs font-normalmal";
 

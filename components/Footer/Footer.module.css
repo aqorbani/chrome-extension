@@ -4,7 +4,9 @@
   flex: 1;
   height: 20px;
   padding: 20px;
-  background-color: black;
+  background-color: #cecece;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .footer a {
@@ -13,7 +15,7 @@
   align-items: center;
   flex-grow: 1;
   font-size: medium;
-  color: #757bc3;
+  color: #ffffff;
 }
 
 .logo {
