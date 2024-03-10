@@ -7,14 +7,47 @@ export default function Main() {
   const [format, setFormat] = useState("auto");
   const [output, setOutput] = useState("english");
   const [data, setData] = useState("");
+  const [response, setResponse] = useState("");
 
   const active =
     "bg-purple-950 text-white rounded-full m-1 pr-2 pl-2 text-xs font-normal";
   const disable =
     "bg-gray-200 rounded-full m-1 pr-2 pl-2 text-xs font-normalmal";
 
+  const apiUrl = "https://api.deepseek.com/v1/chat/completions";
+  const key = "sk-7f8e25e499a44e25901baf1d32a930eb";
+
+  let basicText =
+    "Please rewrite below text in length " +
+    lenght +
+    " and format " +
+    format +
+    " in " +
+    output +
+    ":\n ```text \n" +
+    text +
+    "\n```";
+
   const generateHandler = async () => {
-    console.log(output);
+    if (text === "") {
+      setResponse("");
+      return;
+    }
+    await fetch(apiUrl, {
+      method: "POST",
+      body: JSON.stringify({
+        model: "deepseek-chat",
+        messages: [{ role: "user", content: basicText }],
+      }),
+      headers: {
+        Authorization: "Bearer " + key,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setResponse(data.choices[0].message.content);
+      });
   };
 
   return (
@@ -114,7 +147,7 @@ export default function Main() {
         <div className="flex w-full justify-center items-center">
           <textarea
             name="text"
-            value={data}
+            value={response}
             className={`m-0 p-2 rounded ${styles.textarea}`}
             rows="20"
           ></textarea>

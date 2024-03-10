@@ -1,5 +1,5 @@
 import styles from "../../styles/Pages.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TbMobiledata } from "react-icons/tb";
 
 export default function Main() {
@@ -11,20 +11,35 @@ export default function Main() {
   const apiUrl = "https://api.deepseek.com/v1/chat/completions";
   const key = "sk-7f8e25e499a44e25901baf1d32a930eb";
 
+  let basicText =
+    "translate below text {Auto- English} to {Farsi}:\n ```text \n" +
+    text +
+    "\n```";
+
   const [btnStatus, setBtnStatus] = useState("english");
   const [btnStatusRes, setBtnStatusRes] = useState("persian");
   const active =
     "bg-gray-800 text-white rounded-full p-2 text-sm font-semibold";
   const disable = "bg-gray-200 p-2 text-sm font-semibold rounded-full";
 
-  const changeHandler = async (e) => {
-    setText(e.target.value);
+  useEffect(() => {
+    translateHandler();
+  }, [basicText]);
 
+  const changeHandler = async (e) => {
+    await setText(e.target.value);
+  };
+
+  const translateHandler = async () => {
+    if (text === "") {
+      setResponse("");
+      return;
+    }
     await fetch(apiUrl, {
       method: "POST",
       body: JSON.stringify({
         model: "deepseek-chat",
-        messages: [{ role: "user", content: e.target.value }],
+        messages: [{ role: "user", content: basicText }],
       }),
       headers: {
         Authorization: "Bearer " + key,
@@ -85,6 +100,7 @@ export default function Main() {
             className={`m-0 p-2 rounded ${styles.textarea}`}
             value={response}
             rows="20"
+            dir="rtl"
           ></textarea>
         </div>
       </div>
