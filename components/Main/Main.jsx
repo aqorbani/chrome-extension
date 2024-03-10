@@ -17,9 +17,9 @@ export default function Main() {
     "bg-gray-800 text-white rounded-full p-2 text-sm font-semibold";
   const disable = "bg-gray-200 p-2 text-sm font-semibold rounded-full";
 
-  // useEffect(() => {
-  //   translateHandler();
-  // }, [text]);
+  useEffect(() => {
+    translateHandler();
+  }, [text]);
 
   const changeHandler = async (e) => {
     await setText(e.target.value);
