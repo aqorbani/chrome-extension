@@ -1,42 +1,50 @@
 import styles from "../../styles/Pages.module.css";
 import { useState, useEffect } from "react";
+import { BsTranslate } from "react-icons/bs";
+import { FaSquarePen } from "react-icons/fa6";
 
 export default function Index({ navigateToPage }) {
-  const [name, setName] = useState("iman");
-
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
+
+  const [btnStatus, setBtnStatus] = useState("translate");
+  const active =
+    "flex flex-col justify-center items-center w-full pt-3 p-2 mt-20 bg-gray-50 text-purple-900 transition-all hover:delay-50 rounded-r-3xl";
+  const disable = "flex flex-col justify-center items-center w-full pt-3 p-2";
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((res) => res.json())
       .then((data) => {
-        setData(data.splice(0, 10));
+        setData(data.splice(0, 5));
         setLoading(false);
       });
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>No profile data</p>;
+  // <div>
+  //   {data?.map((item) => (
+  //     <p className="font-semibold text-xs">{item.title}</p>
+  //   ))}
+  // </div>;
 
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title} onClick={() => setName("omid")}>
-          {name}
-        </h1>
-        <div>
-          {data?.map((item) => (
-            <p>{item.title}</p>
-          ))}
+        <div className="flex h-full">
+          <div className="min-w-80 bg-gray-50">test1</div>
+          <div className="w-20 bg-slate-300 pr-1">
+            <button className={btnStatus === "translate" ? active : disable}>
+              <BsTranslate />
+              <p className="font-semibold text-xs">Translate</p>
+            </button>
+            <button className={btnStatus === "translate" ? disable : active}>
+              <FaSquarePen />
+              <p className="font-semibold text-xs">Write</p>
+            </button>
+          </div>
         </div>
-        <p className={styles.description}>
-          This is an example of a Browser Extension built with NEXT.JS. Please
-          refer to the GitHub repo for running instructions and documentation
-        </p>
-        <h1 className={styles.code}>Index Page ./components/Index/index.js</h1>
-        <p>{"[ - This is Index page content - ]"}</p>
-        <p onClick={() => navigateToPage("new")}>{"Go to New Page >"}</p>
       </main>
     </div>
   );
