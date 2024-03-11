@@ -156,6 +156,7 @@ export default function Main() {
             value={response}
             className={`m-0 p-2 rounded ${styles.textarea}`}
             rows="20"
+            readOnly
           ></textarea>
         </div>
       </div>

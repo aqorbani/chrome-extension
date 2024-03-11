@@ -20,8 +20,8 @@ export default function Main() {
   }, [text]);
 
   // Function to Fill State
-  const changeHandler = async (e) => {
-    await setText(e.target.value);
+  const onChangeHandler = (e) => {
+    setText(e.target.value);
   };
 
   // Function to Create Clean Data for Translate
@@ -85,7 +85,7 @@ export default function Main() {
             placeholder="Enter Text"
             className={`m-0 p-2 rounded ${styles.textarea}`}
             value={text}
-            onChange={(e) => changeHandler(e)}
+            onChange={(e) => onChangeHandler(e)}
             rows="20"
           ></textarea>
         </div>
@@ -114,6 +114,7 @@ export default function Main() {
             value={response}
             rows="20"
             dir="rtl"
+            readOnly
           ></textarea>
         </div>
       </div>
