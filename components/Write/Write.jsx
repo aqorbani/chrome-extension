@@ -2,6 +2,7 @@ import styles from "../../styles/Pages.module.css";
 import { useState } from "react";
 
 export default function Main() {
+  // The Place To Define Variables and States
   const [text, setText] = useState("");
   const [lenght, setLength] = useState("auto");
   const [format, setFormat] = useState("auto");
@@ -24,6 +25,7 @@ export default function Main() {
     text +
     "\n```";
 
+  // Function to Get Generated DATA
   const generateHandler = async () => {
     if (text === "") {
       setResponse("");
@@ -49,10 +51,12 @@ export default function Main() {
   return (
     <div className="w-full ">
       <div className="w-full">
+        {/* ____________________________________________________________ TITLE SECTION */}
         <h2 className="p-1 m-1 text-xl font-bold">Write</h2>
         <p className="text-white w-fit p-1 ml-1 text-xs font-semibold bg-black rounded-full">
           Compose
         </p>
+        {/* ________________________________________________________ GET INPUT SECTION */}
         <p className="text-black w-fit p-2 text-xs font-normal">
           Write about :
         </p>
@@ -67,6 +71,8 @@ export default function Main() {
             rows="20"
           ></textarea>
         </div>
+        {/* ________________________________________________________ GET SETTING SECTION */}
+        {/* _________________________________________________________ GET LENGTH SECTION */}
         <div className="flex w-fit m-2">
           <h3 className="text-black w-fit p-2 m-1 text-xs font-normal">
             Lenght :
@@ -96,6 +102,7 @@ export default function Main() {
             Long
           </button>
         </div>
+        {/* ________________________________________________________ GET FORMAT SECTION */}
         <div className="flex w-fit m-2">
           <h3 className="text-black w-fit p-2 m-1 text-xs font-normal">
             Format :
@@ -119,6 +126,7 @@ export default function Main() {
             Message
           </button>
         </div>
+        {/* ____________________________________________________ GET OUTPUT LANGUAGE SECTION */}
         <div className="flex w-fit m-2">
           <h3 className="text-black w-fit p-2 m-1 text-xs font-normal">
             Output Language :
@@ -132,6 +140,7 @@ export default function Main() {
             <option value="persian">Persian</option>
           </select>
         </div>
+        {/* ________________________________________________________ GENERATE BUTTON SECTION */}
         <div className="flex w-ull m-2">
           <button
             onClick={generateHandler}
@@ -140,6 +149,7 @@ export default function Main() {
             Generate
           </button>
         </div>
+        {/* _____________________________________________________________ SHOW INPUT SECTION */}
         <div className="flex w-full justify-center items-center">
           <textarea
             name="text"

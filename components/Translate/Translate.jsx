@@ -3,26 +3,28 @@ import { useState, useEffect } from "react";
 import { TbMobiledata } from "react-icons/tb";
 
 export default function Main() {
+  // The Place To Define Variables and States
   const [text, setText] = useState("");
-
   const [response, setResponse] = useState("");
-
   const [btnStatus, setBtnStatus] = useState("english");
   const [btnStatusRes, setBtnStatusRes] = useState("persian");
   const active =
     "bg-gray-800 text-white rounded-full p-2 text-sm font-semibold";
   const disable = "bg-gray-200 p-2 text-sm font-semibold rounded-full";
 
+  // Execute Translate Function When The Text State Has Been CHenged
   useEffect(() => {
     if (text !== "") {
       translateHandler();
     }
   }, [text]);
 
+  // Function to Fill State
   const changeHandler = async (e) => {
     await setText(e.target.value);
   };
 
+  // Function to Create Clean Data for Translate
   const updatedContent = async () => {
     let basicText =
       "translate below text {Auto- English} to {Farsi}:" +
@@ -33,12 +35,14 @@ export default function Main() {
     return basicText;
   };
 
+  // Function to Get Translated Data From API
   const translateHandler = async () => {
     if (text === "") {
       setResponse("");
       return;
     }
 
+    // Preparing Final Data to Search
     const finalContent = await updatedContent();
 
     await fetch(process.env.DEEPSEEK, {
@@ -61,7 +65,9 @@ export default function Main() {
   return (
     <div className="w-full ">
       <div className="w-full">
+        {/* ________________________________________________________ TITLE SECTION */}
         <h2 className="p-1 m-1 text-xl font-bold">Translate</h2>
+        {/* ____________________________________________________ GET INPUT SECTION */}
         <div className="flex w-fit m-2 bg-gray-200 rounded-full">
           <button className={btnStatus === "english" ? active : disable}>
             English detected
@@ -85,6 +91,7 @@ export default function Main() {
         </div>
       </div>
 
+      {/* _____________________________________________________ SHOW OUTPUT SECTION */}
       <div className="w-full">
         <h2 className="flex w-full justify-center mt-3 mb-3 p-1 m-1 text-xl font-bold">
           <TbMobiledata onClick={() => translateHandler()} />

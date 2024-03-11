@@ -6,6 +6,7 @@ import Translate from "../Translate/Translate";
 import Write from "../Write/Write";
 
 export default function Index({ navigateToPage }) {
+  // The Place To Define Variables and States
   const [btnStatus, setBtnStatus] = useState("translate");
   const active =
     "flex flex-col justify-center items-center w-full pt-3 p-2 bg-gray-50 text-gray-900 transition-all hover:delay-50 rounded-r-3xl";
@@ -16,9 +17,11 @@ export default function Index({ navigateToPage }) {
     <div className={styles.container}>
       <main className={styles.main}>
         <div className="flex h-full rounded">
+          {/* ________________________________________________________ WORKSPACE SECTION */}
           <div className="min-w-80 bg-gray-50 rounded-l-md text-gray-800">
             {btnStatus === "write" ? <Write /> : <Translate />}
           </div>
+          {/* __________________________________________________________ SIDEBAR SECTION */}
           <div className="w-20 bg-gray-400 pr-1 rounded-r-md pt-32">
             <button
               onClick={() => setBtnStatus("translate")}
