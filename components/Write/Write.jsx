@@ -6,16 +6,12 @@ export default function Main() {
   const [lenght, setLength] = useState("auto");
   const [format, setFormat] = useState("auto");
   const [output, setOutput] = useState("english");
-  const [data, setData] = useState("");
   const [response, setResponse] = useState("");
 
   const active =
     "bg-gray-500 text-white rounded-full m-1 pr-2 pl-2 text-xs font-normal";
   const disable =
     "bg-gray-200 rounded-full m-1 pr-2 pl-2 text-xs font-normalmal";
-
-  const apiUrl = "https://api.deepseek.com/v1/chat/completions";
-  const key = "sk-7f8e25e499a44e25901baf1d32a930eb";
 
   let basicText =
     "Please rewrite below text in length " +
@@ -33,14 +29,14 @@ export default function Main() {
       setResponse("");
       return;
     }
-    await fetch(apiUrl, {
+    await fetch(process.env.DEEPSEEK, {
       method: "POST",
       body: JSON.stringify({
         model: "deepseek-chat",
         messages: [{ role: "user", content: basicText }],
       }),
       headers: {
-        Authorization: "Bearer " + key,
+        Authorization: "Bearer " + process.env.KEY,
         "Content-Type": "application/json",
       },
     })
